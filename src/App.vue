@@ -12,8 +12,8 @@
         <div class="header_title">能力开发系统管理</div>
         <el-submenu index="1" style="background:#3584f3;">
           <template slot="title">
-            <i class="el-icon-location"></i>
-            <span slot="title" ref="bgcolor">租户管理</span>
+            <i class="icon iconfont icon-zuhuguanli" style="color:#fff; font-size:16px;"></i>
+            <span slot="title" ref="bgcolor" style="color:#fff;">租户管理</span>
           </template>
           <el-menu-item-group>
             <router-link to="/"><el-menu-item index="1-1">租户列表</el-menu-item></router-link> 
@@ -22,8 +22,8 @@
         </el-submenu>
         <el-submenu index="2" style="background:#3584f3;">
           <template slot="title">
-            <i class="el-icon-menu"></i>
-            <span slot="title">日志管理</span>
+            <i class="icon iconfont icon-rizhiguanli" style="color:#fff; font-size:16px;"></i>
+            <span slot="title" class="bg" style="color:#fff;">日志管理</span>
           </template>
           <el-menu-item-group>
             <router-link to="/Journal"><el-menu-item index="2-1">日志列表</el-menu-item></router-link> 
@@ -32,8 +32,8 @@
         </el-submenu>
         <el-submenu index="3" style="background:#3584f3;">
           <template slot="title">
-            <i class="el-icon-setting"></i>
-            <span slot="title">系统监控</span>
+            <i class="icon iconfont icon-xitongjiankong" style="color:#fff; font-size:16px;"></i>
+            <span slot="title" style="color:#fff;">系统监控</span>
           </template>
           <el-menu-item-group>
             <router-link to="/Monitoring"><el-menu-item index="3-1">监控管理</el-menu-item></router-link>
@@ -62,7 +62,7 @@
           <span>王小虎</span>
           <!-- <span>退出</span> -->
         </el-header>
-
+        
         <el-main class="el_main">
           <router-view />
         </el-main>
@@ -81,8 +81,9 @@ export default {
     };
     return {
       tableData: Array(20).fill(item),
-      isCollapse: true
+      isCollapse: false
     };
+
   },
   methods: {
     handleOpen(key, keyPath) {
@@ -97,16 +98,18 @@ export default {
   }
 };
 </script>
-
 <style lang="less">
-* {
+  * {
   margin: 0;
   padding: 0;
 }
 a{
   text-decoration: none;
-  color:#000;
+  color:#fff;
 }
+</style>
+<style lang="less" scoped>
+
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -140,6 +143,7 @@ a{
   background: #3584f3;
   color: #ffffff;
 }
+
 .tet {
   width: 100%;
   height: 60px;
@@ -177,17 +181,27 @@ a{
     color:#fff;
   }
 }
+/deep/ .el-menu-item-group{
+  background:#386dd9 !important;
+  .el-menu-item{
+    background:#386dd9;
+    
+  }
+}
+/deep/.el-submenu__title:hover{
+  background: #386dd9;
+}
+/deep/.el-submenu__icon-arrow{
+  color:#fff;
+} /deep/.el-icon-arrow-down{
+  color:#fff;
+}
+/deep/ .el-menu li .el-menu-item{
+  color:#fff;
+  .is-active{
+    color:red;
+  }
+}
 
 
-
-
-// /deep/.el-menu-item-group__title{
-//   background: #3584f3;
-// }
-// /deep/ .router-link-active{
-//   background:blue;
-// }
-// /deep/ .el-menu-item.is-active{
-//   background: blue;
-// }
 </style>

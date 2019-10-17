@@ -54,7 +54,7 @@
       </template>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="editgsForm(scope.$index, scope.row)">查看详情</el-button>
+          <el-button type="text" @click="editgsForm(scope.$index, scope.row)"><i class="icon iconfont icon-chakan" style="font-size:18px; font-weight:bold;"></i></el-button>
         </template>
       </el-table-column>
     </el-table>

@@ -30,7 +30,9 @@
       </template>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="editgsForm(scope.$index, scope.row)">编辑</el-button>
+          <el-button type="text" @click="editgsForm(scope.$index, scope.row)">
+            <i class="icon iconfont icon-bianji" style="font-size:18px; font-weight:bold;"></i>
+          </el-button>
           <el-dialog
             class="headers"
             :title="title"
@@ -62,8 +64,15 @@
               <el-button type="primary" @click="saveEditForm('editForm')">确 定</el-button>
             </div>
           </el-dialog>
-          <el-button type="text" @click="edit">配置</el-button>
-          <el-button type="text" @click="open(scope.$index)">删除</el-button>
+          <el-button type="text" @click="edit" style="margin-left:10px;">
+            <i class="icon iconfont icon-icon-test" style="font-size:18px; font-weight:bold;"></i>
+          </el-button>
+          <!--  -->
+          
+          <!--  -->
+          <el-button type="text" @click="open(scope.$index)">
+            <i class="icon iconfont icon-shanchu" style="color:orange; font-size:18px; font-weight:bold;"></i>
+          </el-button>
           <el-dialog
             :title="title1"
             :visible.sync="dialogEditgsVisible1"
@@ -141,38 +150,77 @@ export default {
       //列表数据
       tableData: [
         {
-          id: "2016-05-02",
-          name: "王2虎",
-          address: "上海市普陀区金沙江路 1518 弄"
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国5联通"
         },
         {
-          id: "2016-05-02",
-          name: "王4虎",
-          address: "上海市普陀区金沙江路 1519 弄"
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国7联通"
         },
         {
-          id: "2016-05-02",
-          name: "王6虎",
-          address: "上海市普陀区金沙江路 1517 弄"
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国6联通"
         },
         {
-          id: "2016-05-02",
-          name: "王7虎",
-          address: "上海市普陀区金沙江路 1516 弄"
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国5联通"
         },
         {
-          id: "2016-05-02",
-          name: "王8虎",
-          address: "上海市普陀区金沙江路 1515 弄"
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国4联通"
+        },
+        {
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国3联通"
+        },
+        {
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国2联通"
+        },
+        {
+          abilityIDs: "1234",
+          abilityNames: "5678",
+          code: "5PF8EWHn9hYd6OxBsV9Gsg==",
+          createTime: "2019-10-15 16:21:42",
+          tenantID: 8,
+          tenantName: "中国1联通"
         }
       ],
       tableLabel: [
-        { label: "租户ID", prop: "id" },
-        { label: "租户名称", prop: "name" },
-        { label: "授权码", prop: "address" },
-        { label: "授权能力编号", prop: "address" },
-        { label: "授权能力", prop: "address" },
-        { label: "创建时间", prop: "address" }
+        { label: "租户ID", prop: "tenantID" },
+        { label: "租户名称", prop: "tenantName" },
+        { label: "授权码", prop: "code" },
+        { label: "授权能力编号", prop: "abilityIDs" },
+        { label: "授权能力", prop: "abilityNames" },
+        { label: "创建时间", prop: "createTime" }
       ]
     };
   },
@@ -214,17 +262,16 @@ export default {
     doFilter() {
       if (this.tableDataName == "" || this.tableDataValue == "") {
         this.$message.warning("查询条件不能为空！");
-        this.tableData;
         return;
       } // this.tableData = []; //tableData列表数据 //每次手动将数据置空,因为会出现多次点击搜索情况
       this.filtertableData = []; //过滤后的数据
       this.tableData.forEach((value, index) => {
         // console.log(value,'value')
-        if (value.id && value.address) {
+        if (value.tenantID && value.tenantName) {
           console.log(this.tableDataName, this.tableDataValue, "----9");
           if (
-            value.id.indexOf(this.tableDataName) != -1 &&
-            value.address.indexOf(this.tableDataValue) != -1
+            value.tenantID.indexOf(this.tableDataName) != -1 &&
+            value.tenantName.indexOf(this.tableDataValue) != -1
           ) {
             console.log(111, "111");
             this.filtertableData.push(value);
@@ -315,6 +362,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
+
 .home {
   height: 870px;
   background: #fff;

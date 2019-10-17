@@ -2,7 +2,6 @@
   <div class="mHome">
     <div class="titleQ">
       <el-tabs v-model="activeName" @tab-click="handleClick">
-        
         <el-tab-pane label="配置管理" name="first">
           <div class="search">
             <el-form :inline="true" :model="formInline" class="demo-form-inline">
@@ -27,9 +26,8 @@
             <el-table-column prop="date" label="更新时间"></el-table-column>
 
             <el-table-column label="操作">
-              <template slot-scope="scope">
-                <el-button type="text" @click="editgsForm(scope.$index, scope.row)">查看详情</el-button>
-              </template>
+              <el-radio v-model="radio" label="1">备选项</el-radio>
+              <el-radio v-model="radio" label="2">备选项</el-radio>
             </el-table-column>
           </el-table>
           <div class="block">
@@ -80,7 +78,9 @@
 
             <el-table-column label="操作">
               <template slot-scope="scope">
-                <el-button type="text" @click="editgsForm(scope.$index, scope.row)">查看详情</el-button>
+                <el-button type="text" @click="editgsForm(scope.$index, scope.row)">
+                <i class="icon iconfont icon-chakan" style="font-size:18px; font-weight:bold;"></i>
+                </el-button>
               </template>
             </el-table-column>
           </el-table>
@@ -105,6 +105,7 @@ import echarts from "echarts";
 export default {
   data() {
     return {
+      radio: '1',
       activeName: "first",
       currentPage: 1, //初始页
       pagesize: 10, //每页的数据
@@ -654,14 +655,14 @@ export default {
   margin-left: 40px;
   margin-top: -16px;
 }
-/deep/ .el-dialog__header{
+/deep/ .el-dialog__header {
   background: #3584f3;
-  color:#fff;
-  /deep/ .el-dialog__title{
-    color:#fff;
+  color: #fff;
+  /deep/ .el-dialog__title {
+    color: #fff;
   }
-  /deep/ .el-dialog__close.el-icon.el-icon-close::before{
-    color:#fff;
+  /deep/ .el-dialog__close.el-icon.el-icon-close::before {
+    color: #fff;
   }
 }
 </style>

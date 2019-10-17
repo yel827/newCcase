@@ -9,12 +9,11 @@ import 'element-ui/lib/theme-chalk/index.css'
 Vue.use(ElementUI)
 //axios
 import Axios from 'axios';
-import qs from 'qs';
 // 给Vue的原型挂载 $axios属性
 Vue.prototype.$axios = Axios;
-Vue.prototype.$qs=qs;
 
 
+import './assets/icon/iconfont.css'
 //echarts图表
 import echarts from "echarts"
 Vue.config.productionTip = false

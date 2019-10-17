@@ -21,7 +21,9 @@
       </template>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="text" @click="editgsForm(scope.$index, scope.row)">编辑</el-button>
+          <el-button type="text" @click="editgsForm(scope.$index, scope.row)">
+            <i class="icon iconfont icon-bianji" style="font-size:18px; font-weight:bold;"></i>
+          </el-button>
           <el-dialog
             class="headers"
             :title="title"
